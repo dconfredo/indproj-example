@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript 6th Edition  v 1.16
+     
+
+      Individual Project Template
+  
+      Author: Dominic Confredo
+      Date:   2/13/2017
+
+      Filename: page 2.html
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+   <title>Individual Student Project Template 1</title>
+   <link rel="stylesheet" media="screen and (max-device-width: 999px)" href="projhand.css" />
+   <link rel="stylesheet" media="screen and (min-device-width: 1000px)" href="project.css" />
+ 
+   <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet" type="text/css">
+   <script src="script.js"></script>
+</head>
+
+<body>
+   <div id="container">
+      <header>
+         <h1>
+            <img src="https://cdn.gomix.com/6c032e98-770d-4cc3-8a95-91e12bf3ff73%2Fdepositphotos_12800548-stock-illustration-money-bag-with-dollar-sign.jpg" />
+         </h1>
+      </header>
+
+      <nav>
+         <ul>
+            <li><a href="/index.html">About</a></li>
+           <li><a href="/Skins.html">Skins</a></li>
+            <li id="currentpage"><a href="/order.html">Order</a></li>
+            <li><a href="/warranty.html">Warranty</a></li>      </ul>
+      </nav>
+      <!-- Added the order of the product. -->  
+      <article>
+         <h2>Order</h2>
+      <form>
+          <input type="checkbox" id="item1" value="50" /><br/>
+          <label for="item1">The Standard Build ($50.00)</label>
+          <input type="checkbox" id="item2" value="60" /><br/>
+          <label for="item2">The Void Build ($60.00)</label>
+          <input type="checkbox" id="item3" value="70" /><br/>
+          <label for="item3">The Beast Build ($70.00)</label>
+          <input type="checkbox" id="item4" value="80" /><br/>
+          <label for="item4">The Nemesis Build ($80.00)</label>
+          <input type="checkbox" id="item5" value="20" /><br/> <!-- added in warranty number 1-->
+          <label for="item5">Warranty ($20.00)</label>        
+          <input type="checkbox" id="item6" value="35" /><br/> <!-- added in warranty number 2-->
+          <label for="item6">Warranty ($35.00)</label>        
+          <input type="button" value="Submit" id="sButton" />
+  <!-- added each item in along with each price. Also realigned the rows by going to my .css, scrolling down to "form label" and change the text-align to "right".-->
+      </form>
+      <div>
+         <p id="total"></p>
+      </div>
+   </article>
+   <script src="script.js">
+          // array storing places to display
+       var products = ["The Standard Build", "The Void Build", "The Beast Build", "The Nemesis",]; //lays out what specially is being sold
+     
+       var labels = document.getElementsByTagName("label");
+       
+       
+       // function to generate list from array 
+       
+       function processProducts() {
+         for (var i= 0; i < 4; i++) { // write each array element to its corresponding list item
+           labels[i].innerHTML = products[i]                         
+           }
+       }
+     
+       if (window.addEventListener) {
+         window.addEventListener("load", processProducts, false);
+       } else if (window.attachEvent) {
+         window.attachEvenet("onload", processProducts);
+       }
+  // function to add value of selected check boxes and display total
+    function calcTotal()
+    {
+      var itemTotal = 0;
+      var salesTaxRate = .06; //stores the current sales tax 
+      var items = document.getElementByTagName("input");
+      for (var i = 0; 1 < 5; i++) {
+        if (items[1].checked) {
+          itemTotal += (items[1].value * 1);
+        }
+      }
+      itemTotal *= 1+ salesTaxRate; //notice the use of the compound operator here
+      document.getElementById("total").innerHTML = "Your order total is $" + itemTotal.toFixed(2); 
+    }
+    
+    //add backward compatible event listener to Submit button
+    var submitButton = document.getElementById("aButton");
+    if (submitButton.addEvenetListener) {
+      submitButton.addEventListener("click", calcTotal, false);
+    } else if (submitButton.attachEvent) {
+      submitButton.attachEvent("onclick", calcTotal); 
+    }
+     </script> 
+  
+      <footer>
+        <!-- I changed the company name -->
+         <p>Kodi &bull; Salisbury, Maryland</p>
+      </footer>
+   </div>
+</body>
+</html>
